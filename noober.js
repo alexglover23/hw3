@@ -9,7 +9,7 @@ function pageLoad() {
   
   console.log(ride)
 
-  levelOfService = 'Tacos'
+  
   
   let numberOfLegs = ride.length
 
@@ -17,7 +17,9 @@ function pageLoad() {
 
   // only single riders are eligible for Noober Pool
 
+
   if (numberOfLegs == '1') {
+    
     
     passenger1Name = ride[0].passengerDetails.first + ' ' + ride[0].passengerDetails.last
     
@@ -37,8 +39,22 @@ function pageLoad() {
     console.log(passenger1Phone)
     console.log(passenger1NumberOfPassengers)
 
+    passenger1PurpleRequested = ride[0].purpleRequested
+
+    if (passenger1PurpleRequested == Boolean(true)) {
+      levelOfService = 'Purple'
+    } else if (passenger1NumberOfPassengers > '3') {
+      levelOfService = 'Noober XL'
+    } else {
+      levelOfService = 'Noober X'
+    } 
+    
+    console.log(passenger1PurpleRequested)
+
   } else if (numberOfLegs == '2') {
     
+    levelOfService = 'Noober Pool'
+
     passenger1Name = ride[0].passengerDetails.first + ' ' + ride[0].passengerDetails.last
     passenger2Name = ride[1].passengerDetails.first + ' ' + ride[1].passengerDetails.last
     
@@ -59,7 +75,7 @@ function pageLoad() {
 
     passenger1DropoffAddressLine2 = ride[0].dropoffLocation.city + ', ' + ride[0].dropoffLocation.state + ' ' + ride[0].dropoffLocation.zip
     passenger2DropoffAddressLine2 = ride[1].dropoffLocation.city + ', ' + ride[1].dropoffLocation.state + ' ' + ride[1].dropoffLocation.zip
-    
+
     console.log(passenger1Name)
     console.log(passenger2Name)
     console.log(passenger1Phone)
@@ -67,6 +83,8 @@ function pageLoad() {
 
   } else {
     
+    levelOfService = 'Noober Pool'
+
     passenger1Name = ride[0].passengerDetails.first + ' ' + ride[0].passengerDetails.last
     passenger2Name = ride[1].passengerDetails.first + ' ' + ride[1].passengerDetails.last
     passenger3Name = ride[2].passengerDetails.first + ' ' + ride[2].passengerDetails.last
@@ -100,6 +118,12 @@ function pageLoad() {
     console.log(passenger3Name)
     console.log(passenger1Phone)
     console.log(passenger1NumberOfPassengers)
+
+   /*  if (passenger1NumberOfPassengers == '1' && passenger2NumberOfPassengers == '1' && passenger3NumberOfPassengers ==) {
+      levelOfService = 'Noober Pool'
+    } else {
+      levelOfService = 'Noober X'
+    } */
   }
 
   // these variables map to the elements on the finished page;
