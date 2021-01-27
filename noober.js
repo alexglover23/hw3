@@ -31,7 +31,7 @@ function pageLoad() {
 
     // Per Slack clarifications, Pool superscedes Purple, superscedes XL, superscedes X
     if (passenger1PurpleRequested == Boolean(true)) {
-      levelOfService = 'Purple'
+      levelOfService = 'Noober Purple'
     } else if (passenger1NumberOfPassengers > '3') {
       levelOfService = 'Noober XL'
     } else {
