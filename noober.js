@@ -17,8 +17,9 @@ function pageLoad() {
   // Per Slack clarifications, Pool superscedes Purple, superscedes XL, superscedes X
 
   // if there's only 1 leg
-  if (numberOfLegs == '1') {
+  if (numberOfLegs == 1) {
     
+    // gather passenger info
     passenger1Name = ride[0].passengerDetails.first + ' ' + ride[0].passengerDetails.last
     passenger1Phone = ride[0].passengerDetails.phoneNumber
     passenger1NumberOfPassengers = ride[0].numberOfPassengers
@@ -27,25 +28,21 @@ function pageLoad() {
     passenger1DropoffAddressLine1 = ride[0].dropoffLocation.address 
     passenger1DropoffAddressLine2 = ride[0].dropoffLocation.city + ', ' + ride[0].dropoffLocation.state + ' ' + ride[0].dropoffLocation.zip
 
+    // is Purple requested?
     passenger1PurpleRequested = ride[0].purpleRequested
 
-    // Per Slack clarifications, Pool superscedes Purple, superscedes XL, superscedes X
+    // Per Slack clarification from Professor, Pool superscedes Purple, superscedes XL, superscedes X
     // XL is greater than 3 passengers on a single leg ride
     if (passenger1PurpleRequested == true) {
       levelOfService = 'Noober Purple'
-    } else if (passenger1NumberOfPassengers > '3') {
+    } else if (passenger1NumberOfPassengers > 3) {
       levelOfService = 'Noober XL'
     } else {
       levelOfService = 'Noober X'
     } 
-    
-    /* console.log(passenger1Name)
-    console.log(passenger1Phone)
-    console.log(passenger1NumberOfPassengers)
-    console.log(passenger1PurpleRequested) */
 
   // if there are two legs, it's automatically a Noober Pool and each leg only has 1 rider
-  } else if (numberOfLegs == '2') {
+  } else if (numberOfLegs == 2) {
     
     levelOfService = 'Noober Pool'
 
@@ -69,11 +66,6 @@ function pageLoad() {
    
     passenger1DropoffAddressLine2 = ride[0].dropoffLocation.city + ', ' + ride[0].dropoffLocation.state + ' ' + ride[0].dropoffLocation.zip
     passenger2DropoffAddressLine2 = ride[1].dropoffLocation.city + ', ' + ride[1].dropoffLocation.state + ' ' + ride[1].dropoffLocation.zip
-
-    /* console.log(passenger1Name)
-    console.log(passenger2Name)
-    console.log(passenger1Phone)
-    console.log(passenger1NumberOfPassengers) */
   
   // if there are three legs, it's automatically a Noober Pool and each leg only has 1 rider
   } else {
@@ -108,12 +100,6 @@ function pageLoad() {
     passenger2DropoffAddressLine2 = ride[1].dropoffLocation.city + ', ' + ride[1].dropoffLocation.state + ' ' + ride[1].dropoffLocation.zip
     passenger3DropoffAddressLine2 = ride[2].dropoffLocation.city + ', ' + ride[2].dropoffLocation.state + ' ' + ride[2].dropoffLocation.zip
     
- /*    console.log(passenger1Name)
-    console.log(passenger2Name)
-    console.log(passenger3Name)
-    console.log(passenger1Phone)
-    console.log(passenger1NumberOfPassengers) */
-
   }
 
   // these variables map to the elements on the finished page;
