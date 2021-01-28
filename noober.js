@@ -30,7 +30,8 @@ function pageLoad() {
     passenger1PurpleRequested = ride[0].purpleRequested
 
     // Per Slack clarifications, Pool superscedes Purple, superscedes XL, superscedes X
-    if (passenger1PurpleRequested == Boolean(true)) {
+    // XL is greater than 3 passengers on a single leg ride
+    if (passenger1PurpleRequested == true) {
       levelOfService = 'Noober Purple'
     } else if (passenger1NumberOfPassengers > '3') {
       levelOfService = 'Noober XL'
